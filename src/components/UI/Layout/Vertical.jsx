@@ -7,13 +7,10 @@ export default function (props) {
         <div style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "stretch",
-            justifyContent: "center",
             gap: "2vh",
 
-            height: "50vh",
             width: "80vw",
-            marginTop: "15vh",
+
             marginLeft: "10vw"
         }}>
             {children}
