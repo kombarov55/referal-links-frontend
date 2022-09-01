@@ -1,13 +1,17 @@
 import React from "react";
 
-export default function ({children, alignItems="center"}) {
+export default function ({
+                             children,
+                             alignItems = "center",
+                             width = "100%"
+                         }) {
 
     return (
         <div style={{
             display: "flex",
             flexDirection: "column",
             gap: "2vh",
-            width: "100%",
+            width: width,
             alignItems: alignItems,
         }}>
             {children}

@@ -9,6 +9,7 @@ import ManagerHomeScreen from "./components/Screens/ManagerHomeScreen";
 import PartnerCreationScreen from "./components/Screens/PartnerCreationScreen";
 import PartnerCreatedScreen from "./components/Screens/PartnerCreatedScreen";
 import PartnerSearchScreen from "./components/Screens/PartnerSearchScreen";
+import RegisterClient from "./components/Screens/RegisterClientScreen";
 
 const rootElement = document.getElementById("root");
 render(
@@ -20,6 +21,7 @@ render(
             <Route path={"/partner_creation"} element={<PartnerCreationScreen/>}/>
             <Route path={"/partner_created"} element={<PartnerCreatedScreen/>}/>
             <Route path={"/partner_search"} element={<PartnerSearchScreen/>}/>
+            <Route path={"/register_client"} element={<RegisterClient/>}/>
         </Routes>
     </BrowserRouter>,
     rootElement

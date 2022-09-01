@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({text, size = "medium"}) => {
+export default ({text, size = "medium", textAlign = "start"}) => {
     let fontSize = "";
 
     switch (size) {
@@ -11,12 +11,13 @@ export default ({text, size = "medium"}) => {
             fontSize = "1vmax"
             break;
         case "big":
-            fontSize = "10vmin"
+            fontSize = "8vmin"
             break;
     }
     return (
         <div style={{
-            fontSize: fontSize
+            fontSize: fontSize,
+            textAlign: textAlign
         }}>
             {text}
         </div>
