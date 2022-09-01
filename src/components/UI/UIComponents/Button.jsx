@@ -13,7 +13,9 @@ export default function (props) {
             background: "#ffffff",
             color: "black",
             fontWeight: "bold",
-            border: "2px solid black"
+            fontSize: "2.5vmax",
+            border: "1px solid black",
+            boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
         }} onClick={() => onClick()}>
             {text}
         </div>

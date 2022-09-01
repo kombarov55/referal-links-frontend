@@ -1,6 +1,7 @@
 import React from "react";
 import UserIcon from "../Icons/UserIcon";
 import ImgButton from "../UIComponents/ImgButton";
+import Icon from "../UIComponents/Icon";
 
 export default props => (
     <div style={{
@@ -11,7 +12,9 @@ export default props => (
 
         width: "95vw"
     }}>
-        <ImgButton icon={<UserIcon/>} text={"Профиль"}/>
+        <ImgButton iconName={"pi-user"}
+                   text={"Профиль"}
+        />
     </div>
 
 )
