@@ -7,7 +7,7 @@ export default function (props) {
     return (
         <div style={{
             fontWeight: "bold",
-            fontSize: "10vw",
+            fontSize: "8vw",
             textAlign: "center"
         }}>
             {text}

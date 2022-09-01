@@ -1,16 +1,12 @@
 import React from "react";
-import {InputText} from "primereact/inputtext";
-import Horizontal from "../Layout/Horizontal";
+import {ErrorMessage, Field} from "formik";
 
-export default function(props) {
-    const {title} = props
-
+export default function ({label, name, type}) {
     return (
-        <Horizontal>
-            <div style={{
-                fontSize: "1.5vmax"
-            }}>{title}</div>
-            <InputText />
-        </Horizontal>
+        <>
+            <label>{label}</label>
+            <Field type={type || "text"} name={name}/>
+            <ErrorMessage name={name} component={"span"} className={"errorMsg"}/>
+        </>
     )
 }

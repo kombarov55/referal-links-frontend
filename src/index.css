@@ -15,3 +15,7 @@ code {
 html {
   font-family: 'Roboto', cursive
 }
+
+.errorMsg {
+  color: red;
+}
