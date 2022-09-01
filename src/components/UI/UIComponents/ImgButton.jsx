@@ -11,8 +11,8 @@ export default props => (
         boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
 
         padding: "0.5vmax 0.7vmax"
-    }}>
+    }} onClick={() => props.onClick()}>
         <Icon name={props.iconName} size={"2.5vmax"}/>
-        <div style={{fontSize: "2.5vmax"}} onClick={() => props.onClick()}>{props.text}</div>
+        <div style={{fontSize: "2.5vmax"}}>{props.text}</div>
     </div>
 )

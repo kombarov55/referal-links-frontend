@@ -1,24 +1,24 @@
 import React from "react";
-import Vertical from "../UI/Layout/Vertical";
-import Button from "../UI/UIComponents/Button";
 import {useNavigate} from "react-router-dom";
 import WithFooterAndHeader from "../UI/Page/WithFooterAndHeader";
 import ImgButton from "../UI/UIComponents/ImgButton";
+import PageContent from "../UI/Layout/PageContent";
+
 export default function(props) {
 
     const navigate = useNavigate();
 
     return (
         <WithFooterAndHeader>
-            <Vertical>
+            <PageContent alignItems={"stretch"}>
                 <ImgButton iconName={"pi-user-plus"}
                            text={"Добавить партнёра"}
                            onClick={() => navigate("/partner_creation")}
                 />
 
                 <ImgButton iconName={"pi-users"}
-                           text={"Поиск партнёра"}
-                           onClick={() => navigate("/partner_creation")}
+                           text={"Поиск партнёров"}
+                           onClick={() => navigate("/partner_search")}
                 />
 
                 <ImgButton iconName={"pi-plus-circle"}
@@ -30,7 +30,7 @@ export default function(props) {
                            text={"Поиск клиентов"}
                            onClick={() => navigate("/partner_creation")}
                 />
-            </Vertical>
+            </PageContent>
         </WithFooterAndHeader>
     )
 

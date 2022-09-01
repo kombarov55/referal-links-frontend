@@ -1,8 +1,9 @@
 import React from "react";
 
-export default props => (
-    <i className={"pi " + props.name} style={{
-        fontSize: props.size,
+export default ({size, name, onClick}) => (
+
+    <i className={"pi " + name} style={{
+        fontSize: size,
         marginTop: "0.8vh"
-    }}/>
+    }} onClick={() => onClick()}/>
 )

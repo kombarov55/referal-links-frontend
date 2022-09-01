@@ -1,27 +1,31 @@
 import React from "react"
 import Title from "../UI/UIComponents/Title";
-import Vertical from "../UI/Layout/Vertical";
 import TextInput from "../UI/Form/TextInput";
-import Button from "../UI/UIComponents/Button";
 import {useNavigate} from "react-router-dom";
+import PageContent from "../UI/Layout/PageContent";
+import {Form, Formik} from "formik";
+import SubmitButton from "../UI/Form/SubmitButton";
 
 export default function (props) {
     const navigate = useNavigate()
 
     return (
-        <div>
-            <Vertical>
-                <Title text={"Авторизация"}/>
-                <TextInput title={"Логин:"}/>
-                <TextInput title={"Пароль:"}/>
-                <Button
-                    style={{
-                        width: "80vw"
-                    }}
-                    text={"Вход"}
-                    onClick={() => navigate("/manager_home")}
-                />
-            </Vertical>
-        </div>
+        <Formik initialValues={{login: "", pwd: ""}}
+                onSubmit={(values) => {
+                    console.log(values)
+                    navigate("/manager_home")
+                }}
+        >
+            {({isSubmitting}) => (
+                <Form>
+                    <PageContent alignItems={"stretch"}>
+                        <Title text={"Авторизация"}/>
+                        <TextInput label={"Логин:"} name={"login"}/>
+                        <TextInput label={"Пароль:"} type="password" name={"pwd"}/>
+                        <SubmitButton text={"Вход"} disabled={isSubmitting}/>
+                    </PageContent>
+                </Form>
+            )}
+        </Formik>
     )
 }
