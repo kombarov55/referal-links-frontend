@@ -23,12 +23,12 @@ export default function(props) {
 
                 <ImgButton iconName={"pi-plus-circle"}
                            text={"Добавить бонусы"}
-                           onClick={() => navigate("/partner_creation")}
+                           onClick={() => navigate("/select_partner")}
                 />
 
                 <ImgButton iconName={"pi-search"}
                            text={"Поиск клиентов"}
-                           onClick={() => navigate("/partner_creation")}
+                           onClick={() => navigate("/client_search")}
                 />
             </PageContent>
         </WithFooterAndHeader>

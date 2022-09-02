@@ -2,9 +2,12 @@ import React from "react";
 import Label from "../UIComponents/Label";
 import Horizontal from "../Layout/Horizontal";
 import Button from "../UIComponents/Button";
+import axios from "axios";
+import Links from "../../../Util/Links";
+import Vertical from "../Layout/Vertical";
 
-export default ({dto}) => {
-    const {login, id, points, registerLink} = dto
+export default ({dto, navigate}) => {
+    const {login, id, points, registerLink, clientsCount} = dto
 
     return (
         <div key={id} style={{
@@ -23,16 +26,38 @@ export default ({dto}) => {
             />
 
             <Label size={"small"}
-                   text={`Очков: ${points}`}
+                   text={`Бонусы: ${points}`}
+            />
+
+            <Label size={"small"}
+                   text={`Количество профилей: ${clientsCount}`}
             />
 
             <Label size={"small"}
                    text={`Ссылка для регистрации клиентов: ${registerLink}`}
             />
-            <Horizontal>
-                <Button text={"История операций"} width={"45%"} fontSize={"1vmax"}/>
-                <Button text={"Обнулить очки"} width={"45%"} fontSize={"1vmax"}/>
-            </Horizontal>
+
+            <Vertical>
+                <Horizontal>
+                    <Button text={"История операций"}
+                            width={"45%"}
+                            fontSize={"1vmax"}
+                            onClick={() => navigate(`/bonus_history?partner_id=${id}`)}
+                    />
+                    <Button text={"Обнулить бонусы"}
+                            width={"45%"}
+                            fontSize={"1vmax"}
+                            onClick={() => {
+                                if (window.confirm(`Обнулить бонусы у ${id}?`)) {
+                                    axios.post(Links.removeBonuses, {id: id})
+                                        .then(rs => navigate("/bonuses_removed"))
+                                }
+                            }}
+                    />
+                </Horizontal>
+                <Button text={"Добавить бонусы"} fontSize={"1vmax"}
+                        onClick={() => navigate(`/add_points?id=${id}&login=${login}&points=${points}`)}/>
+            </Vertical>
         </div>
     )
 }

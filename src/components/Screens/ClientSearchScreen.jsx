@@ -4,29 +4,29 @@ import {Form, Formik} from "formik";
 import Title from "../UI/UIComponents/Title";
 import PageContent from "../UI/Layout/PageContent";
 import SubmitButton from "../UI/Form/SubmitButton";
-import Partner from "../UI/ListItems/Partner";
 import Horizontal from "../UI/Layout/Horizontal";
 import Icon from "../UI/UIComponents/Icon";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import Links from "../../Util/Links";
 import List from "../UI/Layout/List";
+import Client from "../UI/ListItems/Client";
 
 export default function () {
     const navigate = useNavigate()
 
-    const [partners, setPartners] = useState([])
+    const [clients, setClients] = useState([])
 
     useEffect(() => {
-        axios.get(Links.getPartners())
-            .then(rs => setPartners(rs.data))
+        axios.get(Links.getClients(0, 10))
+            .then(rs => setClients(rs.data))
     }, [])
 
 
     return (
         <Formik initialValues={{query: ""}} onSubmit={(values) => {
-            axios.get(Links.findPartnerByLogin(values.query))
-                .then(rs => setPartners(rs.data))
+            axios.get(Links.findClientById(values.query))
+                .then(rs => setClients(rs.data))
         }}
         >
             {({isSubmitting}) => (
@@ -40,13 +40,13 @@ export default function () {
                     <PageContent justifyContent={"flex-start"}
                                  alignItems={"stretch"}
                     >
-                        <Title text={"Поиск партнёра"}/>
+                        <Title text={"Поиск Клиента"}/>
 
-                        <TextInput label={"Логин:"} name="query"/>
+                        <TextInput label={"Номер:"} name="query"/>
                         <SubmitButton text={"Поиск"}/>
 
                         <List>
-                            {partners.map(v => <Partner dto={v} navigate={navigate}/>)}
+                            {clients.map(v => <Client dto={v}/>)}
                         </List>
                     </PageContent>
                 </Form>

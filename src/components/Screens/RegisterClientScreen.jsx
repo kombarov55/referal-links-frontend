@@ -7,11 +7,12 @@ import Vertical from "../UI/Layout/Vertical";
 import Label from "../UI/UIComponents/Label";
 import axios from "axios";
 import Links from "../../Util/Links";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 export default function ({}) {
     const [countries, setCountries] = useState([])
     const [params] = useSearchParams()
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(Links.countries)
@@ -30,12 +31,11 @@ export default function ({}) {
             postIndex: "",
             email: "",
             phone: "",
-            country: ""
+            country: "Россия"
         }} onSubmit={(values) => {
             values.partnerId = params.get("partnerid")
-            console.log(values)
             axios.post(Links.addClient, values)
-                .then(rs => alert(rs.data))
+                .then(rs => navigate(`/client_created?id=${rs.data.id}&email=${rs.data.email}`))
         }}
         validate={values => {
             const errors = {}
