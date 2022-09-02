@@ -17,6 +17,8 @@ import AddPointsScreen from "./components/Screens/AddPointsScreen";
 import BonusesAddedScreen from "./components/Screens/BonusesAddedScreen";
 import RemoveBonuses from "./components/Screens/BonusesRemovedScreen";
 import BonusHistoryScreen from "./components/Screens/BonusHistoryScreen";
+import ManagerProfileScreen from "./components/Screens/ManagerProfileScreen";
+import PartnerProfileScreen from "./components/Screens/PartnerProfileScreen";
 
 const rootElement = document.getElementById("root");
 render(
@@ -36,6 +38,8 @@ render(
             <Route path={"/bonuses_added"} element={<BonusesAddedScreen/>}/>
             <Route path={"/bonuses_removed"} element={<RemoveBonuses/>}/>
             <Route path={"/bonus_history"} element={<BonusHistoryScreen/>}/>
+            <Route path={"/manager_profile"} element={<ManagerProfileScreen/>}/>
+            <Route path={"/partner_profile"} element={<PartnerProfileScreen/>}/>
         </Routes>
     </BrowserRouter>,
     rootElement

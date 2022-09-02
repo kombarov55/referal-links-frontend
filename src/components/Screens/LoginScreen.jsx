@@ -19,7 +19,19 @@ export default function (props) {
                     axios.post(Links.login, values)
                         .then(rs => {
                             if (rs.data.found) {
-                                navigate("/manager_home")
+                                window.localStorage.setItem("login_data", JSON.stringify(rs.data))
+                                switch (rs.data.role) {
+                                    case "MANAGER":
+                                        navigate("/manager_home")
+                                        break;
+                                    case "PARTNER":
+                                        navigate("/partner_profile")
+                                        break;
+                                    case "CLIENT":
+                                        navigate("/client_profile")
+                                        break;
+                                }
+
                             } else {
                                 alert("Неправильный логин/пароль")
                                 setSubmitting(false)

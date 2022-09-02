@@ -12,5 +12,6 @@ export default {
     findClientById: (id) => `${root}/client/findById?q=${id}`,
     addBonuses: `${root}/partner/addBonuses.do`,
     removeBonuses: `${root}/partner/removeBonuses.do`,
-    findBonusHistory: partnerId => `${root}/bonusHistory/findByPartnerId?q=${partnerId}`
+    findBonusHistory: partnerId => `${root}/bonusHistory/findByPartnerId?q=${partnerId}`,
+    findPartnerByLoginStrict: login => `${root}/partner/byLogin?q=${login}`
 }
