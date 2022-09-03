@@ -1,6 +1,8 @@
 const root = "https://sheltered-inlet-75741.herokuapp.com"
 
 export default {
+    registerLink: partnerId => `${window.location.origin}#/register_client?partnerid=${partnerId}`,
+
     login: `${root}/account/login`,
     addPartner: `${root}/partner`,
     getPartners: (page = 0, size = 10) => `${root}/partner?page=${page}&size=${size}`,

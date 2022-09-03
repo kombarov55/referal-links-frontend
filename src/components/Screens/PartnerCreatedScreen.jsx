@@ -5,6 +5,7 @@ import Button from "../UI/UIComponents/Button";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import Label from "../UI/UIComponents/Label";
 import PageContent from "../UI/Layout/PageContent";
+import Links from "../../Util/Links";
 
 export default function (props) {
     const navigate = useNavigate()
@@ -19,7 +20,11 @@ export default function (props) {
 
                 <Label text={`Логин: ${params.get("login")}`}/>
                 <Label text={`Номер партнёра: ${params.get("id")}`}/>
-                <Label text={`Ссылка на регистрацию: ${params.get("register_link")}`}/>
+                <>
+                    <Label text={`Ссылка на регистрацию:`}/>
+                    <a href={Links.registerLink(params.get("id"))}>{Links.registerLink(params.get("id"))}</a>
+                </>
+
 
                 <Button text={"Готово"} onClick={() => navigate("/manager_home")}/>
             </PageContent>

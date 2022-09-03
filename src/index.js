@@ -1,6 +1,6 @@
 import {render} from "react-dom";
 import App from "./App";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import React from "react";
 import {Route, Routes} from "react-router";
 import LoginScreen from "./components/Screens/LoginScreen";
@@ -22,7 +22,7 @@ import PartnerProfileScreen from "./components/Screens/PartnerProfileScreen";
 
 const rootElement = document.getElementById("root");
 render(
-    <BrowserRouter>
+    <HashRouter>
         <Routes>
             <Route path={"/"} element={<App/>}/>
             <Route path={"/login"} element={<LoginScreen/>}/>
@@ -41,6 +41,6 @@ render(
             <Route path={"/manager_profile"} element={<ManagerProfileScreen/>}/>
             <Route path={"/partner_profile"} element={<PartnerProfileScreen/>}/>
         </Routes>
-    </BrowserRouter>,
+    </HashRouter>,
     rootElement
 );

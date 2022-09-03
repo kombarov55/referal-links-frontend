@@ -7,7 +7,7 @@ import Links from "../../../Util/Links";
 import Vertical from "../Layout/Vertical";
 
 export default ({dto, navigate}) => {
-    const {login, id, points, registerLink, clientsCount} = dto
+    const {login, id, points, clientsCount} = dto
 
     return (
         <div key={id} style={{
@@ -33,9 +33,11 @@ export default ({dto, navigate}) => {
                    text={`Количество профилей: ${clientsCount}`}
             />
 
-            <Label size={"small"}
-                   text={`Ссылка для регистрации клиентов: ${registerLink}`}
-            />
+            <>
+                <Label size={"small"} text={`Ссылка для регистрации клиентов:`}/>
+                <a href={Links.registerLink(id)}><Label size={"small"} text={Links.registerLink(id)}/></a>
+            </>
+
 
             <Vertical>
                 <Horizontal>
