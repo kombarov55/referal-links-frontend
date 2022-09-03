@@ -1,4 +1,4 @@
-const root = "http://192.168.0.11:8666"
+const root = "https://sheltered-inlet-75741.herokuapp.com"
 
 export default {
     login: `${root}/account/login`,
