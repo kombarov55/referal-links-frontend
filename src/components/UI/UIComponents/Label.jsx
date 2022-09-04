@@ -5,7 +5,7 @@ export default ({text, size = "medium", textAlign = "start"}) => {
 
     switch (size) {
         case "medium":
-            fontSize = "5vmin"
+            fontSize = "4vmin"
             break;
         case "small":
             fontSize = "1vmax"

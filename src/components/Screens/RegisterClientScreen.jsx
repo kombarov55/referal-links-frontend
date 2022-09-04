@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import WithFooterAndHeader from "../UI/Page/WithFooterAndHeader";
 import {Form, Formik} from "formik";
 import TextInput from "../UI/Form/TextInput";
 import Vertical from "../UI/Layout/Vertical";
@@ -55,49 +54,47 @@ export default function ({}) {
                     return errors
                 }}>
             {() => (
-                <WithFooterAndHeader>
-                    <PageContent justifyContent={"flex-start"}>
-                        <Form>
-                            <Label text={"Новый пользователь"} size={"big"} textAlign={"center"}/>
-                            <br/>
-                            <Vertical alignItems={"stretch"} width={"80vw"}>
-                                <TextInput label={"Номер телефона (без кода страны):*"} name="phone"/>
-                                <TextInput label={"Фамилия, Имя:*"} name="fio"/>
-                                <TextInput label={"Адрес (Улица, номер дома, номер квартиры):*"} name="address"/>
-                                <TextInput label={"Область:*"} name={"region"}/>
-                                <TextInput label={"Индекс:*"} name="postIndex"/>
-                                <TextInput label={"Email:*"} name="email" type={"email"}/>
+                <PageContent justifyContent={"flex-start"}>
+                    <Form>
+                        <Label text={"Новый пользователь"} size={"big"} textAlign={"center"}/>
+                        <br/>
+                        <Vertical alignItems={"stretch"} width={"80vw"}>
+                            <TextInput label={"Номер телефона (без кода страны):*"} name="phone"/>
+                            <TextInput label={"Имя, Фамилия:*"} name="fio"/>
+                            <TextInput label={"Адрес (Улица, номер дома, номер квартиры):*"} name="address"/>
+                            <TextInput label={"Область:*"} name={"region"}/>
+                            <TextInput label={"Индекс:*"} name="postIndex"/>
+                            <TextInput label={"Email:*"} name="email" type={"email"}/>
 
-                                {/*custom button style*/}
-                                <button type="submit" style={{
-                                    "display": "inline-block",
-                                    "padding": "6px 12px",
-                                    "marginBottom": "0",
-                                    "fontSize": "14px",
-                                    "fontWeight": "normal",
-                                    "lineHeight": "1.42857143",
-                                    "textAlign": "center",
-                                    "whiteSpace": "nowrap",
-                                    "verticalAlign": "middle",
-                                    "MsTouchAction": "manipulation",
-                                    "touchAction": "manipulation",
-                                    "cursor": "pointer",
-                                    "WebkitUserSelect": "none",
-                                    "MozUserSelect": "none",
-                                    "MsUserSelect": "none",
-                                    "userSelect": "none",
-                                    "backgroundImage": "none",
-                                    "border": "1px solid transparent",
-                                    "borderRadius": "4px",
-                                    width: "30vw",
-                                    alignSelf: "center"
-                                }}>
-                                    ОТПРАВИТЬ
-                                </button>
-                            </Vertical>
-                        </Form>
-                    </PageContent>
-                </WithFooterAndHeader>
+                            {/*custom button style*/}
+                            <button type="submit" style={{
+                                "display": "inline-block",
+                                "padding": "6px 12px",
+                                "marginBottom": "0",
+                                "fontSize": "14px",
+                                "fontWeight": "normal",
+                                "lineHeight": "1.42857143",
+                                "textAlign": "center",
+                                "whiteSpace": "nowrap",
+                                "verticalAlign": "middle",
+                                "MsTouchAction": "manipulation",
+                                "touchAction": "manipulation",
+                                "cursor": "pointer",
+                                "WebkitUserSelect": "none",
+                                "MozUserSelect": "none",
+                                "MsUserSelect": "none",
+                                "userSelect": "none",
+                                "backgroundImage": "none",
+                                "border": "1px solid transparent",
+                                "borderRadius": "4px",
+                                width: "30vw",
+                                alignSelf: "center"
+                            }}>
+                                ОТПРАВИТЬ
+                            </button>
+                        </Vertical>
+                    </Form>
+                </PageContent>
             )}
         </Formik>
     )

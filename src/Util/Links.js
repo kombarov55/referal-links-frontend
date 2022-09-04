@@ -1,4 +1,4 @@
-const root = "http://localhost:8666"
+const root = "https://sheltered-inlet-75741.herokuapp.com"
 
 export default {
     registerLink: partnerId => `${window.location.origin}#/register_client?partnerid=${partnerId}`,
