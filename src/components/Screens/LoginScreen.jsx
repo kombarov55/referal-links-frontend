@@ -16,6 +16,7 @@ export default function (props) {
     return (
         <Formik initialValues={{login: "", pwd: ""}}
                 onSubmit={(values, {setSubmitting}) => {
+                    console.log('submit')
                     axios.post(Links.login, values)
                         .then(rs => {
                             if (rs.data.found) {

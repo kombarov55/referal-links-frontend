@@ -1,4 +1,4 @@
-const root = "localhost:8666"
+const root = "http://localhost:8666"
 
 export default {
     registerLink: partnerId => `${window.location.origin}#/register_client?partnerid=${partnerId}`,

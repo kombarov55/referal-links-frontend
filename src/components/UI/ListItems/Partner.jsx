@@ -7,10 +7,10 @@ import Links from "../../../Util/Links";
 import Vertical from "../Layout/Vertical";
 
 export default ({dto, navigate}) => {
-    const {login, id, points, clientsCount} = dto
+    const {login, points, clientsCount} = dto
 
     return (
-        <div key={id} style={{
+        <div key={login} style={{
             width: "100%",
             display: "flex",
             flexDirection: "column",
@@ -18,11 +18,7 @@ export default ({dto, navigate}) => {
             padding: "1vmax"
         }}>
             <Label size={"medium"}
-                   text={login}
-            />
-
-            <Label size={"small"}
-                   text={`Код пользователя: ${id}`}
+                   text={`Код пользователя: ${login}`}
             />
 
             <Label size={"small"}
@@ -35,7 +31,7 @@ export default ({dto, navigate}) => {
 
             <>
                 <Label size={"small"} text={`Ссылка для регистрации клиентов:`}/>
-                <a href={Links.registerLink(id)}><Label size={"small"} text={Links.registerLink(id)}/></a>
+                <a href={Links.registerLink(login)}><Label size={"small"} text={Links.registerLink(login)}/></a>
             </>
 
 
@@ -44,21 +40,21 @@ export default ({dto, navigate}) => {
                     <Button text={"История операций"}
                             width={"45%"}
                             fontSize={"1vmax"}
-                            onClick={() => navigate(`/bonus_history?partner_id=${id}`)}
+                            onClick={() => navigate(`/bonus_history?partner_id=${login}`)}
                     />
                     <Button text={"Обнулить бонусы"}
                             width={"45%"}
                             fontSize={"1vmax"}
                             onClick={() => {
-                                if (window.confirm(`Обнулить бонусы у ${id}?`)) {
-                                    axios.post(Links.removeBonuses, {id: id})
+                                if (window.confirm(`Обнулить бонусы у ${login}?`)) {
+                                    axios.post(Links.removeBonuses, {id: login})
                                         .then(rs => navigate("/bonuses_removed"))
                                 }
                             }}
                     />
                 </Horizontal>
                 <Button text={"Добавить бонусы"} fontSize={"1vmax"}
-                        onClick={() => navigate(`/add_points?id=${id}&login=${login}&points=${points}`)}/>
+                        onClick={() => navigate(`/add_points?id=${login}&login=${login}&points=${points}`)}/>
             </Vertical>
         </div>
     )
