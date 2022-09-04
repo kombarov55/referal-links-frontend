@@ -1,7 +1,8 @@
 import React from "react";
 import {ErrorMessage, Field} from "formik";
 
-export default function ({label, name, type="text"}) {
+export default
+function ({label, name, type="text"}) {
     return (
         <>
             <label>{label}</label>
