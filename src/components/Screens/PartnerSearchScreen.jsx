@@ -24,9 +24,12 @@ export default function () {
 
 
     return (
-        <Formik initialValues={{query: ""}} onSubmit={(values) => {
+        <Formik initialValues={{query: ""}} onSubmit={(values, {setSubmitting}) => {
             axios.get(Links.findPartnerByLogin(values.query))
-                .then(rs => setPartners(rs.data))
+                .then(rs => {
+                    setPartners(rs.data)
+                    setSubmitting(false)
+                })
         }}
         >
             {({isSubmitting}) => (
@@ -43,7 +46,7 @@ export default function () {
                         <Title text={"Поиск партнёра"}/>
 
                         <TextInput label={"Логин:"} name="query"/>
-                        <SubmitButton text={"Поиск"}/>
+                        <SubmitButton text={"Поиск"} isSubmitting={isSubmitting}/>
 
                         <List>
                             {partners.map(v => <Partner dto={v} navigate={navigate}/>)}

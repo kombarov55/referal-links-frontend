@@ -16,9 +16,10 @@ export default function (props) {
     return (
         <Formik initialValues={{login: "", pwd: ""}}
                 onSubmit={(values, {setSubmitting}) => {
-                    console.log('submit')
                     axios.post(Links.login, values)
                         .then(rs => {
+                            setSubmitting(false)
+
                             if (rs.data.found) {
                                 window.localStorage.setItem("login_data", JSON.stringify(rs.data))
                                 switch (rs.data.role) {
@@ -35,7 +36,6 @@ export default function (props) {
 
                             } else {
                                 alert("Неправильный логин/пароль")
-                                setSubmitting(false)
                             }
                         })
                 }}
@@ -48,7 +48,7 @@ export default function (props) {
                         <Title text={"Авторизация"}/>
                         <TextInput label={"Логин:"} name={"login"}/>
                         <TextInput label={"Пароль:"} type="password" name={"pwd"}/>
-                        <SubmitButton text={"Вход"}/>
+                        <SubmitButton text={"Вход"} isSubmitting={isSubmitting}/>
                     </PageContent>
                 </Form>
             )}

@@ -16,10 +16,12 @@ export default ({}) => {
     const navigate = useNavigate()
 
     return <>
-        <Formik initialValues={{query: ""}} onSubmit={(values) => {
+        <Formik initialValues={{query: ""}} onSubmit={(values, {setSubmitting}) => {
             console.log(values)
             axios.post(Links.addBonuses, {id: params.get("id"), points: values.query})
                 .then(rs => {
+                    setSubmitting(false)
+
                     if (rs.data.success) {
                         navigate(`/bonuses_added?points=${rs.data.points}`)
                     } else {
@@ -53,7 +55,7 @@ export default ({}) => {
                         <Label text={`Количество бонусов: ${params.get("points")}`}/>
 
                         <TextInput label={"Введите количество бонусов"} name="query"/>
-                        <SubmitButton text={"Добавить"}/>
+                        <SubmitButton text={"Добавить"} isSubmitting={isSubmitting}/>
                     </PageContent>
                 </Form>
             )}

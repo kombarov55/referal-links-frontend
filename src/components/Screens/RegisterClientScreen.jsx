@@ -9,6 +9,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import IsValidPhone from "../../Util/IsValidPhone";
 import IsValidIndex from "../../Util/IsValidIndex";
 import PageContent from "../UI/Layout/PageContent";
+import SubmitButton from "../UI/Form/SubmitButton";
 
 export default function ({}) {
     const [countries, setCountries] = useState([])
@@ -29,10 +30,14 @@ export default function ({}) {
             postIndex: "",
             email: "",
             country: "Россия"
-        }} onSubmit={(values) => {
+        }} onSubmit={(values, {setSubmitting}) => {
             values.partnerId = params.get("partnerid")
             axios.post(Links.addClient, values)
-                .then(rs => navigate(`/client_created?phone=${rs.data.phone}`))
+                .then(rs => {
+                    navigate(`/client_created?phone=${rs.data.phone}`)
+
+                    setSubmitting(false)
+                })
         }}
                 validate={values => {
                     const errors = {}
@@ -53,7 +58,7 @@ export default function ({}) {
 
                     return errors
                 }}>
-            {() => (
+            {({isSubmitting}) => (
                 <PageContent justifyContent={"flex-start"}>
                     <Form>
                         <Label text={"Новый пользователь"} size={"big"} textAlign={"center"}/>
@@ -66,32 +71,7 @@ export default function ({}) {
                             <TextInput label={"Индекс:*"} name="postIndex"/>
                             <TextInput label={"Email:*"} name="email" type={"email"}/>
 
-                            {/*custom button style*/}
-                            <button type="submit" style={{
-                                "display": "inline-block",
-                                "padding": "6px 12px",
-                                "marginBottom": "0",
-                                "fontSize": "14px",
-                                "fontWeight": "normal",
-                                "lineHeight": "1.42857143",
-                                "textAlign": "center",
-                                "whiteSpace": "nowrap",
-                                "verticalAlign": "middle",
-                                "MsTouchAction": "manipulation",
-                                "touchAction": "manipulation",
-                                "cursor": "pointer",
-                                "WebkitUserSelect": "none",
-                                "MozUserSelect": "none",
-                                "MsUserSelect": "none",
-                                "userSelect": "none",
-                                "backgroundImage": "none",
-                                "border": "1px solid transparent",
-                                "borderRadius": "4px",
-                                width: "30vw",
-                                alignSelf: "center"
-                            }}>
-                                ОТПРАВИТЬ
-                            </button>
+                            <SubmitButton text={"ОТПРАВИТЬ"} externalStyle={true} isSubmitting={isSubmitting}/>
                         </Vertical>
                     </Form>
                 </PageContent>

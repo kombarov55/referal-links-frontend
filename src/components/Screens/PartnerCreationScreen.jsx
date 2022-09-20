@@ -56,7 +56,7 @@ export default function (props) {
                             <TextInput label="Пароль" name={"pwd"} type={"password"}/>
                             <TextInput label="Ещё раз пароль:" name={"confirmPwd"} type={"password"}/>
 
-                            <SubmitButton text={"Сохранить"} disabled={isSubmitting}/>
+                            <SubmitButton text={"Сохранить"} isSubmitting={isSubmitting}/>
                             <Button text={"Назад"} onClick={() => navigate(-1)}/>
 
                         </PageContent>

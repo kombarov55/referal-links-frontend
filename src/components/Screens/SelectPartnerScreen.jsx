@@ -14,9 +14,10 @@ export default function ({}) {
     const navigate = useNavigate();
 
     return <>
-        <Formik initialValues={{query: ""}} onSubmit={(values) => {
+        <Formik initialValues={{query: ""}} onSubmit={(values, {setSubmitting}) => {
             axios.get(Links.findPartnerById(values.query))
                 .then(rs => {
+                    setSubmitting(false)
                     const {found, id, login, points} = rs.data
                     if (found) {
                         navigate(`/add_points?id=${id}&login=${login}&points=${points}`)
@@ -40,7 +41,7 @@ export default function ({}) {
                         <Label size={"big"} text={"Введите номер партнёра:"}/>
 
                         <TextInput label={"Номер:"} name="query"/>
-                        <SubmitButton text={"Поиск"}/>
+                        <SubmitButton text={"Поиск"} isSubmitting={isSubmitting}/>
                     </PageContent>
                 </Form>
             )}

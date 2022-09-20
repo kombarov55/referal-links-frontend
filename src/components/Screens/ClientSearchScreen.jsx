@@ -24,9 +24,12 @@ export default function () {
 
 
     return (
-        <Formik initialValues={{query: ""}} onSubmit={(values) => {
+        <Formik initialValues={{query: ""}} onSubmit={(values, {setSubmitting}) => {
             axios.get(Links.findClientById(values.query))
-                .then(rs => setClients(rs.data))
+                .then(rs => {
+                    setSubmitting(false)
+                    setClients(rs.data)
+                })
         }}
         >
             {({isSubmitting}) => (
@@ -43,7 +46,7 @@ export default function () {
                         <Title text={"Поиск Клиента"}/>
 
                         <TextInput label={"Номер:"} name="query"/>
-                        <SubmitButton text={"Поиск"}/>
+                        <SubmitButton text={"Поиск"} isSubmitting={isSubmitting}/>
 
                         <List>
                             {clients.map(v => <Client dto={v}/>)}
